@@ -1,0 +1,85 @@
+body{
+    margin: 70px;
+    padding: 60px;
+    box-sizing: border-box;
+    background-image: url("../img/sistema.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    height: 100%;
+}
+.container__form{
+    background-color: #0a1e35;
+    border-radius: 15px;
+    padding: 40px;
+    opacity: 0.9;
+}
+img{
+    width: 100px;
+    height: 100px;
+    margin-left: 120px;
+}
+h2{
+    text-align: center;
+    color: white;
+}
+input{
+    display: block;
+    width: 300px;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 0 15px;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: white;
+    border-bottom: 2px solid white;
+}
+.check{
+    width: 15px;
+    height: 15px;
+    display: inline;
+}
+label{
+    color: white;
+}
+a{
+    color: white;
+    text-decoration: none;
+    margin-left: 45px;
+}
+.button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    margin-left: 25px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+.botton:active{
+        background-color: #0b1d5a;
+        width: 145px;
+}    
+a:hover{
+    color: #b8b8b8;
+}
+label:hover{
+    color: #b8b8b8;
+}

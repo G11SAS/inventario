@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SISTEMA DE INVENTARIOS</title>
+<link rel="stylesheet" href="css/g11.style.css">
+<link rel="icon" href="img/candado.png">
+</head>
+<body>
+<header>
+    <h1>G11 TEAMS</h1>
+</header>
+
+<div class="menu">
+  <ul>
+    <li><a href="#" onclick="showSection('recepcion')">Recepción</a></li>
+    <li><a href="#" onclick="showSection('entrada')">Entrada</a></li>
+    <li><a href="#" onclick="showSection('almacenamiento')">Almacenamiento</a></li>
+    <li><a href="#" onclick="showSection('trasl')">Traslado</a></li>
+    <li><a href="#" onclick="showSection('preparacion')">Preparación</a></li>
+    <li><a href="#" onclick="showSection('menu_salida')">Menú Salida</a></li>
+    <li><a href="#" onclick="showSection('saldo_stock')">Saldo de Stock</a></li>
+    <li><a href="#" onclick="showSection('contr_stock')">Control de Stock</a></li>
+    <li><a href="cerrar_sesion.php" onclick="showSection('contr_stock')">Cerrar sesion</a></li>
+    
+  </ul>
+</div>
+
+<section id="recepcion" class="section">
+  <div class="button-container">
+    <button id="agregarProductoBtn" onclick="toggle1()">Agregar Producto</button>
+  </div>
+
+  <div class="button-container">
+    <button id="actualizarExistenciasBtn" onclick="toggle2()">Actualizar Existencias</button>
+    </div>
+
+    <div class="button-container">
+    <button id="registrarProveedorBtn" onclick="toggle3()">Registrar Proveedor</button>
+    </div>
+    
+    <div class="button-container">
+    <button id="generarInformeBtn" onclick="toggle4()">Generar Informe de Inventario</button>
+    </div>
+    <form action="producto.php" method="post">
+  <div id="productoForm" style="display: none;">
+    <label for="nombre">Nombre del Producto:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+        
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" min="1" required><br><br>
+        
+        <input type="submit" value="Agregar Producto">
+      </form>
+  </div>
+  <form action="actualizar_existencias.php" method="post">
+  <div id="actualizarForm" style="display: none;">
+    <label for="fecha">Fecha:</label>
+    <input type="date" id="fecha" name="fecha" required><br><br>
+
+    <label for="producto">Producto:</label>
+    <input type="text" id="producto" name="producto" required><br><br>
+
+    <label for="codigo_producto">Código del Producto:</label>
+    <input type="text" id="codigo" name="codigo_producto" required><br><br>
+
+    <label for="cantidad_actual">Cantidad Actual:</label>
+    <input type="number" id="cantidad_actual" name="cantidad_actual" required><br><br>
+
+    <label for="nueva_cantidad">Nueva Cantidad:</label>
+    <input type="number" id="nueva_cantidad" name="nueva_cantidad" required><br><br>
+
+    <label for="motivo_de_la_actualizacion">Motivo de la Actualización:</label><br>
+    <input type="text" id="motivo_de_la_actualizacion" name="motivo_de_la_actualizacion" required><br>
+
+    <label for="responsable_de_la_actualizacion">Responsable de la Actualización:</label>
+    <input type="text" id="responsable_de_la_actualizacion" name="responsable_de_la_actualizacion" required><br><br>
+    
+    <input type="submit" value="Actualizar Existencia">
+  </div>
+  </form>
+  <form action="registrar_proveedor.php" method="post">
+  <div id="registrarForm" style="display: none;">
+    <label for="nombre">Nombre del Proveedor:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion"><br><br>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono"><br><br>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="contacto">Persona de Contacto:</label>
+        <input type="text" id="contacto" name="contacto"><br><br>
+
+        <label for="notas">Notas:</label><br>
+        <textarea id="notas" name="notas" rows="4" cols="50"></textarea><br><br>
+
+        <input type="submit" value="Registrar Proveedor">
+  </div>
+  </form>
+  <form action="generar_informe.php" method="post">
+  <div id="generarForm" style="display: none;">
+    <label for="fecha_inicio">Fecha de Inicio:</label>
+    <input type="date" id="fecha_inicio" name="fecha_inicio" required><br><br>
+
+    <label for="fecha_fin">Fecha de Fin:</label>
+    <input type="date" id="fecha_fin" name="fecha_fin" required><br><br>
+    <input type="submit" value="Generar Informe">
+  </div>
+  </form>
+</section>
+
+
+
+<section id="entrada" class="section">
+  <div class="button-container">
+    <button id="productosBtn" onclick="toggle5()">Productos</button>
+  </div>
+
+  <div class="button-container">
+    <button id="proveedoresBtn" onclick="toggle6()">Proveedores</button>
+    </div>
+
+    <div class="button-container">
+    <button id="informesBtn" onclick="toggle7()">Informes</button>
+    </div>
+
+    <div id="productosForm" style="display: none;"></div>
+    <div id="proveedoresForm" style="display: none;"></div>
+    <div id="informesForm" style="display: none;"></div>
+    </section>
+
+    <section id="almacenamiento" class="section">
+      <div class="button-container">
+        <button id="productossBtn" onclick="toggleProductosAlmacenamiento()">Productos</button>
+      </div>
+    
+      <div class="button-container">
+        <button id="ubicacionesBtn" onclick="toggle9()">Ubicaciones</button>
+        </div>
+    
+        <div class="button-container">
+        <button id="informessBtn" onclick="toggleInformesAlmacenamiento()">Informes</button>
+        </div>
+    <div id="productossForm" style="display: none;">
+    
+    </div>
+
+    <div id="ubicacionesForm" style="display: none;">
+
+    </div>
+    <div id="informessForm" style="display: none;">
+    </section>
+
+    </div>
+    <section id="trasl" class="section">
+      <div class="button-container">
+        <button id="productosssBtn" onclick="toggle11()">Productos</button>
+      </div>
+    
+      <form action="procesar_traslado.php" method="post">
+          <div id="productosssForm" style="display: none;">
+
+        <label for="producto_nombre">Nombre del Producto:</label>
+        <input type="text" id="producto_nombre" name="producto_nombre" required><br>
+        <label for="producto_cantidad">Cantidad:</label>
+        <input type="number" id="producto_cantidad" name="producto_cantidad" required><br>
+
+        <label for="origen_nombre">Nombre del Almacén Origen:</label>
+        <input type="text" id="origen_nombre" name="origen_nombre" required><br>
+
+        <label for="destino_nombre">Nombre del Almacén Destino:</label>
+        <input type="text" id="destino_nombre" name="destino_nombre" required><br>
+
+        <input type="submit" value="Enviar">
+          </div>
+      </form>
+    </section>
+    
+    <section id="preparacion" class="section">
+      <div class="button-container">
+        <button id="cantidadprepararBtn" onclick="toggle12()">Cantidad a Preparar</button>
+      </div>
+      <form action="procesar_preparacion.php" method="post">
+      <div id="cantidaddForm" style="display: none;">
+
+        <label for="nombre">Nombre del Producto:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="stock">Cantidad en Stock:</label>
+        <input type="number" id="stock" name="stock" min="1" required><br><br>
+
+        <label for="location">Ubicación a Preparar:</label>
+        <input type="text" id="location" name="location" required><br><br>
+
+        <label for="cantidadPreparar">Cantidad a Preparar:</label>
+        <input type="number" id="cantidadPreparar" name="cantidadPreparar" min="1" required><br><br>
+
+       <input type="submit" value="Guardar">
+
+      </div>
+      </form>
+    </section>
+    <section id="menu_salida" class="section">
+      <div class="button-container">
+        <button id="ventaproductoBtn" onclick="toggle13()">Venta Producto</button>
+      </div>
+
+      <div class="button-container">
+        <button id="tranferenciaproductosBtn" onclick="toggle14()">Tranferencias de Productos</button>
+      </div>
+
+      <div class="button-container">
+        <button id="devolucionproductosBtn" onclick="toggle15()">Devolucion de Productos</button>
+      </div>
+
+      <div class="button-container">
+        <button id="destruccionproductosBtn" onclick="toggle16()">Destruccion de Productos</button>
+      </div>
+
+      <div id="ventaproductoForm" style="display: none;">
+        <form action="guardar_venta.php" method="post">
+        <div class="form-group">
+          <label for="origen">Origen:</label>
+          <input type="text" id="origen" name="origen" required>
+      </div>
+      <div class="form-group">
+          <label for="destino">Destino:</label>
+          <input type="text" id="destino" name="destino" required>
+      </div>
+      <div class="form-group">
+          <label for="producto">Producto:</label>
+          <select id="producto" name="producto" required>
+              <option value="">Seleccione un producto</option>
+              <option value="producto1">Producto 1</option>
+              <option value="producto2">Producto 2</option>
+              <option value="producto3">Producto 3</option>
+            
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="cantidad">Cantidad a Transferir:</label>
+          <input type="number" id="cantidad" name="cantidad" min="1" required>
+      </div>
+      <button type="submit" class="btn-submit">Registrar </button>
+  </form>
+</div>
+<div id="tranferenciaproductosForm" style="display: none;">
+  <form action="guardar_transferencia.php" method="post">
+    <div class="form-group">
+      <label for="producto">Producto:</label>
+      <select id="producto" name="producto" required>
+        <option value="">Seleccione un producto</option>
+        <option value="producto1">Producto 1</option>
+        <option value="producto2">Producto 2</option>
+        <option value="producto3">Producto 3</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="origen">Origen:</label>
+      <input type="text" id="origen" name="origen" required>
+    </div>
+    <div class="form-group">
+      <label for="destino">Destino:</label>
+      <input type="text" id="destino" name="destino" required>
+    </div>
+    <div class="form-group">
+      <label for="cantidad">Cantidad a Transferir:</label>
+      <input type="number" id="cantidad" name="cantidad" min="1" required>
+    </div>
+    <button type="submit" class="btn-submit">Registrar Transferencia</button>
+  </form>
+</div>
+
+        <div id="devolucionproductosForm" style="display: none;">
+          <form action="guardar_devolucion.php" method="post">
+
+          <div class="form-group">
+            <label for="producto">Producto:</label>
+            <select id="producto" name="producto" required>
+                <option value="">Seleccione un producto</option>
+                <option value="producto1">Producto 1</option>
+                <option value="producto2">Producto 2</option>
+                <option value="producto3">Producto 3</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cantidad">Cantidad a Devolver:</label>
+            <input type="number" id="cantidad" name="cantidad" min="1" required>
+        </div>
+        <button type="submit" class="btn-submit">Registrar Devolución</button>
+    </form>
+</div>
+        <div id="destruccionproductosForm" style="display: none;">
+          <form action="guardar_destruccion.php" method="post">
+
+          <div class="form-group">
+            <label for="producto">Producto:</label>
+            <input type="text" id="producto" name="producto" required>
+        </div>
+        <div class="form-group">
+            <label for="cantidad">Cantidad a Destruir:</label>
+            <input type="number" id="cantidad" name="cantidad" min="1" required>
+        </div>
+        <button type="submit" class="btn-submit">Registrar Destrucción</button>
+    </form>
+</div>
+</form>
+</form>
+</section>
+        <section id="saldo_stock" class="section">
+
+  <div class="button-container">
+    <button id="productossssBtn" onclick="toggle17()">Producto</button>
+  </div>
+  <div id="productossssForm" style="display: none;">
+    <form action="guardar_consulta.php" method="post">
+
+      <div class="form-group">
+        <label for="producto">Producto:</label>
+        <input type="text" id="producto" name="producto" required>
+      </div>
+      <div class="form-group">
+        <label for="saldo">Saldo Disponible:</label>
+        <input type="number" id="saldo" name="saldo" min="0" required>
+      </div>
+      <div class="form-group">
+        <label for="ubicaciones">Ubicaciones:</label>
+        <input type="text" id="ubicaciones" name="ubicaciones" required>
+      </div>
+      <button type="submit" class="btn-submit">Consultar</button>
+    </form>
+  </div>
+</section>
+<section id="contr_stock" class="section">
+
+  <div class="button-container">
+    <button id="controlarstockBtn" onclick="toggle18()">Controlar Stock</button>
+  </div>
+  <div id="controlarstockForm" style="display: none;">
+
+    <form action="guardar_control_stock.php" method="post">
+    
+      <div class="form-group">
+        <label for="producto">Producto:</label>
+        <input type="text" id="producto" name="producto" required>
+      </div>
+      <div class="form-group">
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" min="0" required>
+      </div>
+      <div class="form-group">
+        <label for="tipo">Tipo de Operación:</label>
+        <select id="tipo" name="tipo" required>
+          <option value="entrada">Entrada</option>
+          <option value="salida">Salida</option>
+          <option value="ajuste">Ajuste</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-submit">Registrar</button>
+    </form>
+  </div>
+</section>
+    
+  
+<script src="script.js"></script>
+
+</body>
+</html>

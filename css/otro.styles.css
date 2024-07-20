@@ -1,0 +1,56 @@
+
+body {
+    margin: 75px;
+    padding: 60px;
+    box-sizing: border-box;
+    background-image: url("../img/sistema.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form-register {
+    width: 400px;
+    background:  #0a1e35;
+    padding: 40px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 4px;
+    font-family:  Arial, Helvetica, sans-serif;
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+    opacity: 0.9;
+}
+
+.form-register h4 {
+    font-size: 30px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+.controls {
+    width: 100%;
+    background: 20px;
+    padding: 20x;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #c9cfdb;
+    font-family: 'calibri';
+    font-size: 20px;
+    color: white;
+}
+
+.form-register .botons {
+    width: 150px;
+    border-radius: 15px;
+    background-color: #048620;
+    color: white;
+    margin-top: 20px;
+    border: none;
+    border-bottom: 4px solid #0b5a1c;
+    margin-left: 120px;
+    font-size: 20px;
+}
+.form-register .botons:active{
+    background-color: #0b5a1c;
+    width: 145px;
+    }
